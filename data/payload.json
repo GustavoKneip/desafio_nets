@@ -1,0 +1,27 @@
+{ 
+   "order_id":"ORD-12345", 
+   "customer_id":"USER-987", 
+   "timestamp":"2023-10-27T10:00:00Z", 
+   "payment_info":{ 
+      "payment_id":"PAY-555", 
+      "method":"credit_card", 
+      "amount":250.50, 
+      "status":"authorized" 
+   }, 
+   "items":[ 
+      { 
+         "sku":"PROD-001", 
+         "qty":2, 
+         "price":100.00 
+      }, 
+      { 
+         "sku":"PROD-002", 
+         "qty":1, 
+         "price":50.50 
+      } 
+   ], 
+   "metadata":{ 
+      "source_ip":"192.168.1.1", 
+      "region":"LATAM" 
+   } 
+} 
