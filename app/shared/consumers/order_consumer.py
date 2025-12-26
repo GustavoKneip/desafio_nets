@@ -1,4 +1,4 @@
-from config.kafka import GroupIDs, Topics
+from shared.config.kafka import GroupIDs, Topics
 from consumers.baseConsumer import BaseConsumer
 
 class OrderConsumer(BaseConsumer):

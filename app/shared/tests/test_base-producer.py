@@ -2,7 +2,7 @@ import json
 import pytest
 from unittest.mock import MagicMock, patch
 
-from config.kafka import KAFKA_CONFIG
+from shared.config.kafka import KAFKA_CONFIG
 from producers.baseProducer import BaseProducer
 
 

@@ -1,5 +1,6 @@
 # Python bytecode
 __pycache__/
+.pytest_cache/
 *.py[cod]
 
 # Virtual environment
@@ -46,4 +47,5 @@ pytestdebug.log
 dmypy.json
 
 # Pyre type checker
-.pyre/
+.pyre/\
+

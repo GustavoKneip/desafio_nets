@@ -1,6 +1,6 @@
 import json
 
-from config.kafka import Topics
+from shared.config.kafka import Topics
 from producers.baseProducer import BaseProducer
 
 with open('./data/payload.json', 'r') as f:

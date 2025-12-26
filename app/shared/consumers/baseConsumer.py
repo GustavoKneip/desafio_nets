@@ -2,7 +2,7 @@ from confluent_kafka import Consumer
 import json
 import signal
 import sys
-from config.kafka import KAFKA_CONFIG   
+from shared.config.kafka import KAFKA_CONFIG   
 
 class BaseConsumer():
      

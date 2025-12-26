@@ -1,6 +1,7 @@
 import json
-from processors.baseProcessor import BaseProcessor
 from unittest.mock import MagicMock
+
+from app.processor.baseProcessor import BaseProcessor
 
 def make_kafka_message(payload: dict):
     msg = MagicMock()

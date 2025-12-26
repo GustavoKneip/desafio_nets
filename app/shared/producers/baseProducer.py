@@ -1,6 +1,6 @@
 from confluent_kafka import Producer
 import json
-from config.kafka import KAFKA_CONFIG
+from shared.config.kafka import KAFKA_CONFIG
 
 class BaseProducer:
     def __init__(self):

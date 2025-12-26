@@ -1,7 +1,5 @@
-# schemas/order.py
-
-from schemas.base import EventSchema
-from config.kafka import GroupIDs, Topics
+from shared.schemas.base import EventSchema
+from shared.config.kafka import GroupIDs, Topics
 
 class OrderSchema(EventSchema):
     topic = Topics.ORDER

@@ -1,6 +1,10 @@
+# config/kafka.py
+import os
+
 KAFKA_CONFIG = {
-    "bootstrap.servers": "localhost:9092"
+    "bootstrap.servers": os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
 }
+
 
 class Topics:
     MAIN = "main"
