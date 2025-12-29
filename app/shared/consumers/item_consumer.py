@@ -1,5 +1,5 @@
+from shared.consumers.baseConsumer import BaseConsumer
 from shared.config.kafka import GroupIDs, Topics
-from baseConsumer import BaseConsumer   
 
 class ItemConsumer(BaseConsumer):
     def __init__(self):

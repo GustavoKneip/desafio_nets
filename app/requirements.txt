@@ -1,9 +1,14 @@
-confluent-kafka==2.3.0
-pytest==8.1.1
-pytest-mock==3.12.0
+# --- Kafka ---
+confluent-kafka==2.12.2
 
+# --- Web API ---
 fastapi==0.110.0
 uvicorn[standard]==0.29.0
 
-confluent-kafka==2.3.0
+# --- Testing ---
+pytest==8.1.1
+pytest-mock==3.12.0
 
+# --- Build helpers (important for Windows) ---
+wheel>=0.43.0
+setuptools>=69.0.0
