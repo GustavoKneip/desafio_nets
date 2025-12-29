@@ -6,9 +6,19 @@ call create_env.bat
 
 REM ---- Run docker containers ----
 cd app
-start "Docker Compose" cmd /k ^
-docker-compose down -v ^&^& ^
-docker-compose up --build
+
+echo Stopping containers and removing volumes...
+docker-compose down -v
+
+echo Pruning unused volumes...
+docker volume prune -f
+
+echo Starting containers in background...
+docker-compose up -d --build
+
+REM ---- Wait for Kafka to be ready ----
+echo Waiting for Kafka to start...
+timeout /t 15 /nobreak > nul
 
 REM ---- Consumers ----
 

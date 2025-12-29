@@ -1,3 +1,5 @@
+from datetime import datetime
+import os
 from confluent_kafka import Consumer
 import json
 import signal
@@ -26,8 +28,11 @@ class BaseConsumer():
         while True:
             msg = self.poll()
             if msg:
-                print(json.loads(msg.value().decode()))
-
+                print("#################### New message received ####################")
+                print("Topic:", msg.topic())
+                print("Timestamp:", datetime.now())
+                data = json.loads(msg.value().decode())
+                print(json.dumps(data, indent=2, ensure_ascii=False))
 
     def poll(self):
         msg = self.consumer.poll(1.0)
