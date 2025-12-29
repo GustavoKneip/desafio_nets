@@ -1,13 +1,13 @@
 from unittest.mock import MagicMock, patch
-from consumers.baseConsumer import BaseConsumer
+from shared.consumers.baseConsumer import BaseConsumer
 
 
-@patch("consumers.baseConsumer.Consumer")
+@patch("shared.consumers.baseConsumer.Consumer")
 def test_consumer_initialization(mock_kafka_consumer):
     BaseConsumer("test_topic", "test_group")
     mock_kafka_consumer.assert_called_once()
     
-@patch("consumers.baseConsumer.Consumer")
+@patch("shared.consumers.baseConsumer.Consumer")
 def test_consumer_subscribe_called(mock_kafka_consumer):
     mock_instance = MagicMock()
     mock_kafka_consumer.return_value = mock_instance
@@ -16,7 +16,7 @@ def test_consumer_subscribe_called(mock_kafka_consumer):
 
     mock_instance.subscribe.assert_called_once_with(["test_topic"])
 
-@patch("consumers.baseConsumer.Consumer")
+@patch("shared.consumers.baseConsumer.Consumer")
 def test_poll_returns_message(mock_kafka_consumer):
     mock_instance = MagicMock()
     mock_kafka_consumer.return_value = mock_instance
@@ -31,7 +31,7 @@ def test_poll_returns_message(mock_kafka_consumer):
 
     assert msg == mock_message
 
-@patch("consumers.baseConsumer.Consumer")
+@patch("shared.consumers.baseConsumer.Consumer")
 def test_poll_handles_no_message(mock_kafka_consumer):
     mock_instance = MagicMock()
     mock_kafka_consumer.return_value = mock_instance
@@ -43,7 +43,7 @@ def test_poll_handles_no_message(mock_kafka_consumer):
 
     assert msg is None
 
-@patch("consumers.baseConsumer.Consumer")
+@patch("shared.consumers.baseConsumer.Consumer")
 def test_poll_handles_error_message(mock_kafka_consumer):
     mock_instance = MagicMock()
     mock_kafka_consumer.return_value = mock_instance
@@ -58,7 +58,7 @@ def test_poll_handles_error_message(mock_kafka_consumer):
 
     assert msg is None
 
-@patch("consumers.baseConsumer.Consumer")
+@patch("shared.consumers.baseConsumer.Consumer")
 def test_shutdown_closes_consumer_and_exits(mock_kafka_consumer):
     mock_instance = MagicMock()
     mock_kafka_consumer.return_value = mock_instance
@@ -72,7 +72,7 @@ def test_shutdown_closes_consumer_and_exits(mock_kafka_consumer):
         mock_sys_exit.assert_called_once()
 
 
-@patch("consumers.baseConsumer.Consumer")
+@patch("shared.consumers.baseConsumer.Consumer")
 def test_run_calls_poll(mock_kafka_consumer):
     mock_instance = MagicMock()
     mock_kafka_consumer.return_value = mock_instance

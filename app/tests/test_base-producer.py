@@ -3,17 +3,17 @@ import pytest
 from unittest.mock import MagicMock, patch
 
 from shared.config.kafka import KAFKA_CONFIG
-from producers.baseProducer import BaseProducer
+from shared.producers.baseProducer import BaseProducer
 
 
-@patch("producers.baseProducer.Producer")
+@patch("shared.producers.baseProducer.Producer")
 def test_producer_initialization(mock_kafka_producer):
     BaseProducer()
 
     mock_kafka_producer.assert_called_once_with(KAFKA_CONFIG)
 
 
-@patch("producers.baseProducer.Producer")
+@patch("shared.producers.baseProducer.Producer")
 def test_produce_calls_kafka_produce(mock_kafka_producer):
     mock_instance = MagicMock()
     mock_kafka_producer.return_value = mock_instance
@@ -36,7 +36,7 @@ def test_produce_calls_kafka_produce(mock_kafka_producer):
     assert json.loads(kwargs["value"].decode()) == payload
     assert "on_delivery" in kwargs
 
-@patch("producers.baseProducer.Producer")
+@patch("shared.producers.baseProducer.Producer")
 def test_poll_calls_kafka_poll(mock_kafka_producer):
     mock_instance = MagicMock()
     mock_kafka_producer.return_value = mock_instance
@@ -46,7 +46,7 @@ def test_poll_calls_kafka_poll(mock_kafka_producer):
 
     mock_instance.poll.assert_called_once_with(0)
 
-@patch("producers.baseProducer.Producer")
+@patch("shared.producers.baseProducer.Producer")
 def test_flush_calls_kafka_flush(mock_kafka_producer):
     mock_instance = MagicMock()
     mock_kafka_producer.return_value = mock_instance
@@ -56,7 +56,7 @@ def test_flush_calls_kafka_flush(mock_kafka_producer):
 
     mock_instance.flush.assert_called_once()
 
-@patch("producers.baseProducer.Producer")
+@patch("shared.producers.baseProducer.Producer")
 def test_delivery_report_success(mock_kafka_producer):
     mock_instance = MagicMock()
     mock_kafka_producer.return_value = mock_instance
@@ -75,7 +75,7 @@ def test_delivery_report_success(mock_kafka_producer):
             "✅ Delivered to order [0] @ offset 123"
         )
 
-@patch("producers.baseProducer.Producer")
+@patch("shared.producers.baseProducer.Producer")
 def test_delivery_report_failure(mock_kafka_producer):
     mock_instance = MagicMock()
     mock_kafka_producer.return_value = mock_instance
